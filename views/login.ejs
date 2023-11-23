@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Login</title>
+  <!-- ini ke home -->
+  <!-- <a href="/"><button>Home</button></a> -->
+</head>
+<header id="header">
+  <h1>Jalan Yuk</h1>
+  <nav>
+    <a href="/">Home</a>
+    <!-- <a href="#gunung-list">list mounth</a>
+    <a href="/signup">Sign Up</a>
+    <a href="/login">Login</a>
+    <a class="nav-link" href="#" data-toggle="modal" data-target="#searchModal">Search</a> -->
+  </nav>
+</header>
+<body class="badan">
+  <section class="container"> 
+    <div class="container">
+      <div class="card mx-auto mt-5" style="max-width: 400px;">
+  <div class="card-body">
+    <h2 class="card-title text-center">Login</h2>
+    <form>
+      <div class="mb-3">
+        <label for="email">Username:</label>
+        <input type="text" class="form-control" id="email" name="email" required>
+      </div>
+  
+      <div class="mb-3">
+        <label for="email">Username:</label> <br>
+        <input type="text" id="email" name="email" required>
+      </div>
+      <div class="mb-3">
+
+        <label for="password">Password:</label> <br>
+        <input type="password" id="password" name="password" required>
+      </div>
+      <div>
+        <button type="submit">Login</button>
+        <form action="/login" method="post">
+      </div>
+    </form>
+  </div>
+      </div>
+    </div>
+  </section>
+</body>
+<br>  
+<footer id="footer">
+  <div>
+    <h1>Jalan Yuk</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, sint?</p>
+  </div>
+
+  <div>
+    <h2>Made by</h2>
+    <h6>M.Naufal Fikri Hidayatullah</h6>
+    <h6>Rahmat Adlin Pasaribu</h6>
+  </div>
+
+  <div class="social-icon">
+    <img src="/Naufal/Jalan-Yuk/images/Facebook.svg" alt="">
+    <img src="images/Instagram.svg" alt="">
+    <img src="images/Twitter.svg" alt="">
+  </div>
+  <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="searchModalLabel">Search</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</html>

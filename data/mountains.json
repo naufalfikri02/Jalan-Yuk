@@ -1,0 +1,58 @@
+[
+    {
+        "name": "Kerinci",
+        "description": "Gunung Kerinci (juga dieja 'Kerintji', dan dikenal sebagai Gunung Gadang, Merapi) adalah gunung tertinggi di pulau Sumatra dan gunung berapi tertinggi di Indonesia.",
+        "price": 1990000,
+        "imageURL": "https://static.promediateknologi.id/crop/0x0:0x0/750x500/webp/photo/2023/08/08/gunung-kerinci-1379339471.jpg",
+        "location": "Jambi"
+    },
+    {
+        "name": "Rinjani",
+        "description": "Gunung Rinjani adalah gunung yang berlokasi di Pulau Lombok, Nusa Tenggara Barat.",
+        "price": 5090000,
+        "imageURL": "https://pontas.id/wp-content/uploads/2018/11/rinjani.jpg",
+        "location": "Nusa Tenggara Barat"
+    },
+    {
+        "name": "Puncak Jaya Wijaya",
+        "description": "Puncak Jaya Wijaya atau Piramida Carstensz ialah sebuah puncak tertinggi yang menjadi bagian dari Pegunungan Barisan Sudirman yang terdapat di Kabupaten Mimika, Provinsi Papua Tengah, Indonesia.",
+        "price": 5090000,
+        "imageURL": "https://upload.wikimedia.org/wikipedia/commons/3/3f/Puncakjaya.jpg",
+        "location":"Papua Tengah"
+    },
+    {
+        "name": "Gunung Semeru",
+        "description": "Gunung Semeru adalah gunung tertinggi di Pulau Jawa dan Indonesia.",
+        "price": 1500000,
+        "imageURL": "https://upload.wikimedia.org/wikipedia/commons/1/12/Semeru.jpg",
+        "location": "Jawa Timur"
+    },
+    {
+        "name": "Gunung Merapi",
+        "description": "Gunung Merapi dikenal sebagai salah satu gunung berapi paling aktif di Indonesia.",
+        "price": 1000000,
+        "imageURL": "https://asset-2.tstatic.net/sumsel/foto/bank/images/Gunung-Merapi-di-Sleman-DI-Yogyakarta-TwitterBPPTKG.jpg",
+        "location": "Jawa Tengah"
+    },
+    {
+        "name": "Gunung Agung",
+        "description": "Gunung Agung adalah gunung tertinggi di Pulau Bali dan sering dianggap sebagai gunung suci.",
+        "price": 2000000,
+        "imageURL": "https://www.indonesia.travel/content/dam/indtravelrevamp/en/destinations/bali-nusa-tenggara/bali/gunung-agung/05fb4a4d559b94bc1bfd813af738eea39dcd58e7-3af08.jpg",
+        "location": "Bali"
+    },
+    {
+        "name": "Gunung Bromo",
+        "description": "Gunung Bromo terkenal dengan pemandangan kawahnya yang spektakuler.",
+        "price": 800000,
+        "imageURL": "https://www.indonesia.travel/content/dam/indtravelrevamp/id-id/ide-liburan/6-aktivitas-seru-yang-wajib-dicoba-saat-ke-taman-nasional-bromo-tengger-semeru/header.jpg",
+        "location": "Jawa Timur"
+    },
+    {
+        "name": "Gunung Papandayan",
+        "description": "Gunung Papandayan memiliki kawah yang aktif dan sering dikunjungi oleh pendaki.",
+        "price": 900000,
+        "imageURL": "https://upload.wikimedia.org/wikipedia/commons/5/50/Indonesia_-_papandayan_4.jpg",
+        "location": "Jawa Barat"
+    }
+]

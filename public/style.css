@@ -1,17 +1,4 @@
-:root {
-    --yellow:#FFC108;
-    /* --primary: #8BC53F;
-    --secondary1: #F0DE36;
-    --secondary2: #c2b11b;
-    --accent: #5D9943;
-    --white: #fff; */
-    --background: #FFF6E0;
-    /* --header: #D5FFE4; */
-    /* --black: #28353B; */
-    --font: #6499E9;
-    /* --navcol: var(--secondary2);
-    --border: var(--split); */
-}
+
 * {
     font-family: "Montserrat";
     box-sizing: border-box;
@@ -38,8 +25,7 @@ html, body {
 .badan {
     margin: 0;
     padding: 0;
-    background: url('/coder/images/latarBelakang.jpg') center/cover no-repeat; /* Ganti 'gambar-anda.jpg' dengan URL gambar yang ingin Anda gunakan */
-    
+    background: url('https://images.unsplash.com/photo-1516738901171-8eb4fc13bd20?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D') center/cover no-repeat; /* Ganti 'gambar-anda.jpg' dengan URL gambar yang ingin Anda gunakan */
     align-items: center;
     justify-content: center;
     height: 100vh;
@@ -444,7 +430,7 @@ footer .social-icon .icon {
     }
 }
 
-/* tabel */
+/* table */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -476,3 +462,8 @@ th {
     font-weight: 600;
     font-size: 16px;
 }
+
+/* animasi loading */
+
+  /* Menambahkan animasi ke tombol Order Now */
+
