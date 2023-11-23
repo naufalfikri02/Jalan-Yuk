@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yuk Naik Gunung</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="Website icon" type="png" href="images/jalanyuk.com.png">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+
+<body class="badan">
+    <header id="header">
+        <h1>Jalan Yuk</h1>
+        <nav>
+
+            <a href="#about">About</a>
+            <!-- <a href="#service">Service</a> -->
+            <!-- <a href="#contact">Contact</a> -->
+            <a href="#gunung-list">list mounth</a>
+            <a href="">Login</a>
+            <a class="nav-link" href="#" data-toggle="modal" data-target="#searchModal">Search</a>
+        </nav>
+    </header>
+    <section id="landing">
+        <div>
+
+            <form action="/packages" method="get">
+                <input type="text" placeholder="Search by Nama Gunung" name="search" autocomplete="off">
+                <button type="submit">Search</button> <br> <br>
+                <h1>Daftar Gunung Indonesia</h1>
+                <table border=" 3">
+                    <thead class="img_mounth">
+                        <tr>
+                            <th>Gambar</th>
+                            <th>Nama Gunung</th>
+                            <th>Deskripsi</th>
+                            <th>Harga</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% packages.forEach(el=> { %>
+                            <tr>
+                                <td>
+                                    <img src="<%= el.imageURL %>" style="width: 50%;">
+                                </td>
+                                <td>
+                                    <%= el.name %>
+                                </td>
+                                <td>
+                                    <%= el.description %>
+                                </td>
+                                <td>
+                                    <%= formatCurrency(el.price) %>
+                                </td>
+                            </tr>
+                            <% }); %>
+                    </tbody>
+                </table>
+        </div>
+    </section>
+    <footer id="footer">
+        <div>
+            <h1>Jalan Yuk</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quam, sint?</p>
+        </div>
+
+        <div>
+            <h2>Made by</h2>
+            <h4>M.Naufal Fikri Hidayatullah,</h4>
+            <h4>Rahmat Adlin Pasaribu</h4>
+        </div>
+
+        <div class="social-icon">
+            <img src="/atribut/assets/gambar/" alt="">
+            <img src="images/Instagram.svg" alt="">
+            <img src="images/Twitter.svg" alt="">
+        </div>
+        <div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="searchModalLabel">Search</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
