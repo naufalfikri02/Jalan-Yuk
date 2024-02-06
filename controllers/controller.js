@@ -52,15 +52,22 @@ class Controller {
     try {
       const { email, password, role } = req.body;
       const USER = await User.create({ email, password, role });
+
       req.session.user = {
         email: USER.email,
         role: USER.role,
       };
+
+      if (USER.role === "customer") {
+        return res.redirect("/customers");
+      } else if (USER.role === "admin") {
+        return res.redirect("/admin");
+      }
+
+      // For other roles, redirect to the default home
       res.redirect("/");
     } catch (error) {
       next(error);
-      // console.log(error)
-      // res.send(error)
     }
   }
 
@@ -95,7 +102,15 @@ class Controller {
           email: USER.email,
           role: USER.role,
         };
-        return res.redirect("/");
+        // Redirect based on user role
+        if (USER.role === "admin") {
+          return res.redirect("/admin");
+        } else if (USER.role === "customer") {
+          return res.redirect("/customers");
+        } else {
+          // Handle other roles if needed
+          return res.redirect("/");
+        }
       }
       // wrong password
       res.redirect(`/login?invalidpassworderror=${password}`);
@@ -120,6 +135,46 @@ class Controller {
       }
       const packages = await Package.findAll(option);
       res.render("home", { packages, formatCurrency });
+    } catch (error) {
+      console.log(error);
+      res.send(error);
+    }
+  }
+
+  static async homeCustomer(req, res) {
+    try {
+      const { search } = req.query;
+
+      let option = {
+        where: {},
+      };
+      if (search) {
+        option.where.name = {
+          [Op.iLike]: `%${search}%`,
+        };
+      }
+      const packages = await Package.findAll(option);
+      res.render("homeCustomer", { packages, formatCurrency });
+    } catch (error) {
+      console.log(error);
+      res.send(error);
+    }
+  }
+
+  static async homeAdmin(req, res) {
+    try {
+      const { search } = req.query;
+
+      let option = {
+        where: {},
+      };
+      if (search) {
+        option.where.name = {
+          [Op.iLike]: `%${search}%`,
+        };
+      }
+      const packages = await Package.findAll(option);
+      res.render("homeAdmin", { packages, formatCurrency });
     } catch (error) {
       console.log(error);
       res.send(error);
@@ -162,6 +217,87 @@ class Controller {
     }
   }
 
+  // Tambahkan Gunung Baru untuk Admin
+  static async addMountainForm(req, res) {
+    try {
+      res.render("addMountainForm");
+    } catch (error) {
+      res.send(error);
+    }
+  }
+
+  static async addMountain(req, res) {
+    try {
+      // console.log(imageName);
+      const { name, description, price, location, imageURL } = req.body;
+      const imageName = req.file.filename
+      await Package.create({
+        name,
+        description,
+        price,
+        location,
+        imageURL: `assets/${imageName}`
+      });
+
+      
+      res.redirect("/admin");
+    } catch (error) {
+      res.send(error);
+    }
+  }
+
+  // Edit suatu gunung oleh Admin
+  static async readDetailMountain(req, res) {
+    try {
+      const { id } = req.params;
+      const mountains = await Package.findOne({
+        where: {
+          id,
+        },
+      });
+
+      res.render("detailMountain", { mountains });
+    } catch (error) {
+      res.send(error);
+    }
+  }
+
+  static async editDetailMountain(req, res) {
+    try {
+      const { id } = req.params;
+      const imageName = req.file.filename
+      const {
+        name,
+        description,
+        price,
+        imageURL,
+        createdAt,
+        updatedAt,
+        location,
+      } = req.body;
+
+      await Package.update(
+        {
+          name,
+          description,
+          price,
+          imageURL: `assets/${imageName}`,
+          createdAt,
+          updatedAt,
+          location,
+        },
+        {
+          where: {
+            id,
+          },
+        }
+      );
+      res.redirect("/admin");
+    } catch (error) {
+      res.send(error);
+    }
+  }
+
   // Buat add form pendaftaran customer
   static async addCustomerForm(req, res) {
     try {
@@ -186,14 +322,53 @@ class Controller {
         createdAt,
         updatedAt,
       });
-      res.redirect("/mountains-for-order");
+      res.redirect("/customers/detail");
     } catch (error) {
       console.log(error);
       res.send(error);
     }
   }
 
+  static async detailCustomer(req ,res) {
+    try {
+      const packages = await Package.findAll({
+        include: Order,
+        attributes: { exclude: ['createdAt', 'updatedAt']}
+      })
+      const profiles = await Profile.findAll({
+        include: Order,
+        attributes: { exclude: ['createdAt', 'updatedAt']}
+      })
+      res.render("detailCustomer", {packages,profiles, formatCurrency})
+    } catch (error) {
+      console.log(error);
+      res.send(error)
+    }
+  }
 
+  static async logOutt(req, res) {
+    try {
+      await req.session.destroy();
+      res.redirect("/");
+    } catch (error) {
+      console.log(error);
+      req.send(error);
+    }
+  }
+
+  static async deleteMountain(req, res) {
+    try {
+      const { id } = req.params;
+      await Package.destroy({
+        where: {
+          id,
+        },
+      });
+      res.redirect("/admin");
+    } catch (error) {
+      res.send(error);
+    }
+  }
 }
 
 module.exports = Controller;

@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
-          len: [5, undefined], // Ensure the password length is at least 5 characters
+          len: [8, undefined], // Ensure the password length is at least 5 characters
         },
       },
       role: DataTypes.STRING,

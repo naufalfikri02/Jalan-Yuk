@@ -2,13 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
       body {
-        font-family: 'Arial', sans-serif;
+        font-family: "Arial", sans-serif;
         background-color: #f8f8f8;
         margin: 0;
         padding: 0;
@@ -57,6 +54,7 @@
       }
 
       input,
+      textarea,
       select {
         width: 100%;
         padding: 10px;
@@ -67,6 +65,10 @@
         font-size: 16px;
       }
 
+      textarea {
+        resize: vertical;
+      }
+
       button[type="submit"] {
         background-color: #2ecc71;
       }
@@ -75,29 +77,32 @@
         background-color: #27ae60;
       }
     </style>
-    <title>Add Customer</title>
+    <title>Add Mountain</title>
   </head>
   <body>
-    <h1>Add Customer</h1>
-    <a href="/customers"><button>Home</button></a>
-    <form action="/customers/add" method="post">
+    <h1>Add Mountain</h1>
+    <a href="/admin"><button>Home</button></a>
+    <form
+      action="/admin/addMountain"
+      method="post"
+      enctype="multipart/form-data"
+    >
       <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required />
+      <input type="text" id="name" name="name" />
 
-      <label for="gender">Gender:</label>
-      <select id="gender" name="gender" required>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <!-- Add more options if needed -->
-      </select>
+      <label for="description">Description:</label>
+      <textarea id="description" name="description"></textarea>
 
-      <label for="birthdate">Birthdate:</label>
-      <input type="date" id="birthdate" name="birthdate" required />
+      <label for="price">Price:</label>
+      <input type="number" id="price" name="price" />
 
-      <label for="balance">Balance:</label>
-      <input type="number" id="balance" name="balance" required />
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" />
 
-      <button type="submit">Add Customer</button>
+      <label for="imageURL">Image:</label>
+      <input type="file" id="image" name="imageURL" />
+
+      <button type="submit">Add Mountain</button>
     </form>
   </body>
 </html>

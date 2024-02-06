@@ -8,6 +8,8 @@ const DASHBOARD_ROUTER = require("./dashboardRouter");
 
 const packages = require("./packages");
 const customers = require("./customers");
+const admin = require("./admin");
+
 
 
 function requireLogin(req, res, next) {
@@ -28,8 +30,11 @@ router.get("/", Controller.readPackages)
 router.use("/signup", SIGNUP_ROUTER)
 router.use("/login", LOGIN_ROUTER)
 router.use("/dashboard", requireLogin, DASHBOARD_ROUTER)
+router.use("/logout", Controller.logOutt);
 router.use("/packages", packages);
 router.use("/customers", customers);
+router.use("/admin", admin);
+
 // router.get("/mountains-for-order", Controller.renderMountainsForOrder);
 
 module.exports = router;

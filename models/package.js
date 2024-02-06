@@ -1,30 +1,78 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
+
 module.exports = (sequelize, DataTypes) => {
   class Package extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // define association here
       Package.hasMany(models.Order, {
         foreignKey: 'PackageId',
       });
     }
   }
-  Package.init({
-    name: DataTypes.STRING,
-    description: DataTypes.STRING,
-    price: DataTypes.INTEGER,
-    imageURL: DataTypes.STRING,
-    location: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'Package',
-  });
+
+  Package.init(
+    {
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: 'Name cannot be null.',
+          },
+          notEmpty: {
+            msg: 'Name cannot be empty.',
+          },
+        },
+      },
+      description: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: 'Description cannot be null.',
+          },
+          notEmpty: {
+            msg: 'Description cannot be empty.',
+          },
+        },
+      },
+      price: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: 'Price cannot be null.',
+          },
+          isInt: {
+            msg: 'Price must be an integer.',
+          },
+          min: {
+            args: [100000],
+            msg: 'Price must be at least 100000.',
+          },
+        },
+      },
+      imageURL: {
+        type: DataTypes.STRING,
+      },
+      location: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          notNull: {
+            msg: 'Location cannot be null.',
+          },
+          notEmpty: {
+            msg: 'Location cannot be empty.',
+          },
+        },
+      },
+    },
+    {
+      sequelize,
+      modelName: 'Package',
+    }
+  );
+
   return Package;
 };

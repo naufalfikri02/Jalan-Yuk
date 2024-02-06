@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
       body {
-        font-family: 'Arial', sans-serif;
+        font-family: "Arial", sans-serif;
       }
 
       form {
@@ -20,24 +20,19 @@
 
       button {
         padding: 8px 12px;
+        background-color: #3498db;
+        color: #fff;
         border: none;
         border-radius: 4px;
         cursor: pointer;
-        margin-right: 5px;
-      }
-
-      .edit-button {
-        background-color: #3498db;
-        color: #fff;
-      }
-
-      .delete-button {
-        background-color: #e74c3c;
-        color: #fff;
       }
 
       a {
         text-decoration: none;
+      }
+
+      button:hover {
+        background-color: #2980b9;
       }
 
       h1 {
@@ -50,7 +45,8 @@
         margin-top: 20px;
       }
 
-      th, td {
+      th,
+      td {
         padding: 15px;
         text-align: left;
       }
@@ -87,12 +83,34 @@
       <button type="submit">Search</button> <br />
       <br />
     </form>
-    <a href="/admin"><button>Home</button></a> <br />
+    <a href="/customers"><button>Home</button></a> <br />
     <br />
-    <a href="/logout"><button>Log Out</button></a> <br> <br>
-    <a href="/admin/addMountain"><button>Tambahkan Daftar Gunung</button></a>
+    <a href="/customers/add"><button>Daftar Sekarang untuk Booking</button></a>
+    <br />
+    <br />
+    <a href="/logout"><button>Logout</button></a> <br />
     <h1>Daftar Gunung Indonesia</h1>
-    
+    <table border="3">
+      <thead class="img_mounth">
+        <tr>
+          <th>Nama Anggota</th>
+          <th>Gender</th>
+          <th>Umur</th>
+          <th>Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% profiles.forEach(el => { %>
+        <tr>
+
+          <td><%= el.name %></td>
+          <td><%= el.gender %></td>
+          <td><%= el.calculateAge %></td>
+          <td><%= formatCurrency(el.balance) %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
 
     <% if (packages.length > 0) { %>
     <table border="3">
@@ -103,7 +121,6 @@
           <th>Location</th>
           <th>Deskripsi</th>
           <th>Harga</th>
-          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -116,10 +133,6 @@
           <td><%= el.location %></td>
           <td><%= el.description %></td>
           <td><%= formatCurrency(el.price) %></td>
-          <td>
-            <a href="/admin/<%= el.id %>"><button class="edit-button">Edit</button></a>
-            <a href="/admin/<%= el.id %>/delete"><button class="delete-button">Delete</button></a>
-          </td>
         </tr>
         <% }); %>
       </tbody>

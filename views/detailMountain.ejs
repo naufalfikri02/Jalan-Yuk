@@ -2,10 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <style>
       body {
         font-family: 'Arial', sans-serif;
@@ -57,6 +54,7 @@
       }
 
       input,
+      textarea,
       select {
         width: 100%;
         padding: 10px;
@@ -67,6 +65,10 @@
         font-size: 16px;
       }
 
+      textarea {
+        resize: vertical;
+      }
+
       button[type="submit"] {
         background-color: #2ecc71;
       }
@@ -75,29 +77,31 @@
         background-color: #27ae60;
       }
     </style>
-    <title>Add Customer</title>
+    <title>Edit Mountain</title>
   </head>
   <body>
-    <h1>Add Customer</h1>
-    <a href="/customers"><button>Home</button></a>
-    <form action="/customers/add" method="post">
+    <div>
+      <a href="/admin">Home</a>
+    </div>
+    <br />
+    <br />
+    <form method="post" action="/admin/<%= mountains.id %>/edit"  enctype="multipart/form-data">
       <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required />
+      <input type="text" id="name" name="name" required value="<%= mountains.name %>" />
 
-      <label for="gender">Gender:</label>
-      <select id="gender" name="gender" required>
-        <option value="male">Male</option>
-        <option value="female">Female</option>
-        <!-- Add more options if needed -->
-      </select>
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" required><%= mountains.description %></textarea>
 
-      <label for="birthdate">Birthdate:</label>
-      <input type="date" id="birthdate" name="birthdate" required />
+      <label for="price">Price:</label>
+      <input type="number" id="price" name="price" required value="<%= mountains.price %>" />
 
-      <label for="balance">Balance:</label>
-      <input type="number" id="balance" name="balance" required />
+      <label for="location">Location:</label>
+      <input type="text" id="location" name="location" required value="<%= mountains.location %>" />
 
-      <button type="submit">Add Customer</button>
+      <label for="imageURL">Image:</label>
+      <input type="file" id="imageURL" name="imageURL" required value="<%= mountains.imageURL %>" />
+
+      <button type="submit">Save Changes</button>
     </form>
   </body>
 </html>

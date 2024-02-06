@@ -4,13 +4,27 @@ const { Model, Op } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class Profile extends Model {
     static associate(models) {
-      Profile.belongsTo(models.User, {
-        foreignKey: 'UserId',
-      });
+      Profile.belongsTo(models.User);
 
       Profile.hasMany(models.Order, {
         foreignKey: 'ProfileId',
       });
+    }
+
+    // Hitung umur
+    get calculateAge() {
+      const today = new Date();
+      const birthDate = new Date(this.birthdate);
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const monthDiff = today.getMonth() - birthDate.getMonth();
+
+      if (
+        monthDiff < 0 ||
+        (monthDiff === 0 && today.getDate() < birthDate.getDate())
+      ) {
+        age--;
+      }
+      return age;
     }
   }
 
@@ -28,10 +42,17 @@ module.exports = (sequelize, DataTypes) => {
       gender: DataTypes.STRING,
       birthdate: {
         type: DataTypes.DATE,
+        allowNull: false,
         validate: {
-          isNotFutureDate(value) {
-            if (value > new Date()) {
-              throw new Error('Birthdate cannot be greater than today');
+          notEmpty: {
+            args: true,
+            msg: "Silakan isi Date of Birth anda",
+          },
+          notNull: true,
+          isAbove18(value) {
+            console.log(this.calculateAge, "=====");
+            if (this.calculateAge < 17) {
+              throw new Error("Customers must be at least 18 years old.");
             }
           },
         },
